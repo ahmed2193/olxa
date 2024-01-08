@@ -243,19 +243,25 @@ class _PaymentMethodsScreenState extends State<PaymentMethodsScreen> {
   // }
 
   _handlePaymentInitialization(int price) async {
-    final style = FlutterwaveStyle(
-      appBarText: "My Standard Blue",
-      buttonColor: Color(0xffd0ebff),
-      appBarIcon: Icon(Icons.message, color: Color(0xffd0ebff)),
-      buttonTextStyle: TextStyle(
-          color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
-      appBarColor: Color(0xffd0ebff),
-      dialogCancelTextStyle: TextStyle(color: Colors.redAccent, fontSize: 18),
-      dialogContinueTextStyle: TextStyle(
-        color: Colors.blue,
-        fontSize: 18,
-      ),
-    );
+
+    //Todo commented by sha to temperorly not showing error
+    //sha
+    // final style = FlutterwaveStyle(
+    //   appBarText: "My Standard Blue",
+    //   buttonColor: Color(0xffd0ebff),
+    //   appBarIcon: Icon(Icons.message, color: Color(0xffd0ebff)),
+    //   buttonTextStyle: TextStyle(
+    //       color: Colors.black, fontWeight: FontWeight.bold, fontSize: 18),
+    //   appBarColor: Color(0xffd0ebff),
+    //   dialogCancelTextStyle: TextStyle(color: Colors.redAccent, fontSize: 18),
+    //   dialogContinueTextStyle: TextStyle(
+    //     color: Colors.blue,
+    //     fontSize: 18,
+    //   ),
+    // );
+    //sha
+
+
     final Customer customer = Customer(
       name: CurrentUser.name == "" ? "Customer" : CurrentUser.name,
       phoneNumber: "0123456789",

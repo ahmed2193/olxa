@@ -19,6 +19,7 @@ class APIHelper extends ChangeNotifier {
   static const DETAIL_ACTIVITY_PARCELABLE = "DETAIL_ACTIVITY_PARCELABLE";
   static const BUNDLE = "bundle";
   static const BASE_URL = "classified.canders.in"; // Put Your Base Url here.
+  // static const BASE_URL = "olxa.srkwebappinnovations.com/index.php?action="; // Put Your Base Url here.
 
   // static const BASE_URL =
   //     "olxa.srkwebappinnovations.com"; // Put Your Base Url here.
@@ -77,7 +78,7 @@ class APIHelper extends ChangeNotifier {
   static const CURRENCY_IN_LEFT = "1";
   static const PREF_FILE = "cander";
   static const SUPPORT_EMAIL =
-      "support@canders.in"; // Put your Support Email Here
+      "support@chgh.in"; // Put your Support Email Here
   static const PRODUCT_LOADING_LIMIT = "16";
   static const PRODUCT_LOADING_OFFSET = 8;
   static const PRODUCT_STATUS = "active";

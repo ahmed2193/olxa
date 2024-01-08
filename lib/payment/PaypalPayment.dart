@@ -126,6 +126,56 @@ class PaypalPaymentState extends State<PaypalPayment> {
     return temp;
   }
 
+  WebViewController webViewController = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..loadRequest(Uri.parse('https://www.google.com'));
+
+  myWebView(){
+    navigationDelegate: (NavigationRequest request) {
+      if (request.url.contains(returnURL)) {
+        print(request.toString());
+        final uri = Uri.parse(request.url);
+        final String payerID = uri.queryParameters['PayerID'].toString();
+        if (payerID != null) {
+          services
+              .executePayment(
+              Uri.parse(executeUrl!), payerID, accessToken)
+              .then((id) {
+            widget.onFinish(id);
+            Navigator.of(context).pop('SUCCESS');
+          });
+        } else {
+          Navigator.of(context).pop('FAILED');
+        }
+      }
+      if (request.url.contains(cancelURL)) {
+        Navigator.of(context).pop('CANCELLED');
+      }
+      return NavigationDecision.navigate;
+    };
+  }
+
+  WebViewController controller = WebViewController()
+    ..setJavaScriptMode(JavaScriptMode.unrestricted)
+    ..setBackgroundColor(const Color(0x00000000))
+    ..setNavigationDelegate(
+      NavigationDelegate(
+        onProgress: (int progress) {
+          // Update loading bar.
+        },
+        onPageStarted: (String url) {},
+        onPageFinished: (String url) {},
+        onWebResourceError: (WebResourceError error) {},
+        onNavigationRequest: (NavigationRequest request) {
+          if (request.url.startsWith('https://www.youtube.com/')) {
+            return NavigationDecision.prevent;
+          }
+          return NavigationDecision.navigate;
+        },
+      ),
+    )
+    ..loadRequest(Uri.parse('https://flutter.dev'));
+
   @override
   Widget build(BuildContext context) {
     print(checkoutUrl);
@@ -139,30 +189,8 @@ class PaypalPaymentState extends State<PaypalPayment> {
             onTap: () => Navigator.pop(context),
           ),
         ),
-        body: WebView(
-          initialUrl: checkoutUrl,
-          javascriptMode: JavascriptMode.unrestricted,
-          navigationDelegate: (NavigationRequest request) {
-            if (request.url.contains(returnURL)) {
-              print(request.toString());
-              final uri = Uri.parse(request.url);
-              final String payerID = uri.queryParameters['PayerID'].toString();
-              if (payerID != null) {
-                services
-                    .executePayment(Uri.parse(executeUrl!), payerID, accessToken)
-                    .then((id) {
-                  widget.onFinish(id);
-                  Navigator.of(context).pop('SUCCESS');
-                });
-              } else {
-                Navigator.of(context).pop('FAILED');
-              }
-            }
-            if (request.url.contains(cancelURL)) {
-              Navigator.of(context).pop('CANCELLED');
-            }
-            return NavigationDecision.navigate;
-          },
+        body: WebViewWidget(
+          controller: webViewController,
         ),
       );
     } else {

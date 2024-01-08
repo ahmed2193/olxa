@@ -13,7 +13,7 @@ class Messages extends StatelessWidget {
   Messages({required this.fromUserId});
 
   String UNENCODED_PATH = 'api/v1/';
-  String BASE_URL = "Mark_Classified.org";
+  String BASE_URL = "classified.canders.in";
   String FETCH_CHAT_URL = "get_all_msg";
 
   Future fetchChatMessage({

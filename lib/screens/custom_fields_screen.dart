@@ -57,7 +57,9 @@ class _CustomFieldsScreenState extends State<CustomFieldsScreen> {
             customData.forEach((element) {
               if (element["value"] == "") allFieldsAreFilled = false;
             });
-            if (allFieldsAreFilled) Navigator.of(context).pop(customData);
+            // if (allFieldsAreFilled) Navigator.of(context).pop(customData);
+            // if (allFieldsAreFilled) 
+            Navigator.of(context).pop();
           },
         ),
       ),

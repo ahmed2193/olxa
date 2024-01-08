@@ -167,11 +167,12 @@ void main() async {
   return runApp(
     Phoenix(
       child: new MyApp(
-        isFreshInstalled: isFreshInstalled,
-      ),
+          isFreshInstalled: isFreshInstalled,
+          ),
     ),
   );
 }
+
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -226,14 +227,14 @@ class MyApp extends StatelessWidget {
               enabledBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide: BorderSide(color: HexColor()
-                    //Colors.grey[800],
-                    ),
+                  //Colors.grey[800],
+                ),
               ),
               focusedBorder: OutlineInputBorder(
                 borderRadius: BorderRadius.circular(10.0),
                 borderSide: BorderSide(color: HexColor()
-                    //Colors.grey[800],
-                    ),
+                  //Colors.grey[800],
+                ),
               ),
             ),
             // This is the theme of your application.
@@ -252,9 +253,8 @@ class MyApp extends StatelessWidget {
           // ),
           home: isFreshInstalled
               ? LocationSearchScreenFirst()
-              : TabsScreen(
-                  title: 'Classified',
-                ),
+
+         : TabsScreen(title: 'Classified',),
           routes: {
             ChatScreen.routeName: (ctx) => ChatScreen(),
             InvoicesAndBillingScreen.routeName: (ctx) =>
