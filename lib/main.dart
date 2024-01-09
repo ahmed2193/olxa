@@ -128,7 +128,11 @@ void main() async {
       badge: true,
       sound: true,
     );
-
+// CachedNetworkImage(
+//   imageUrl: apiImageUrl,
+//   placeholder: (context, url) => CircularProgressIndicator(),
+//   errorWidget: (context, url, error) => Icon(Icons.error),
+// )
     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
       RemoteNotification? notification = message.notification;
       AndroidNotification? android = message.notification?.android;

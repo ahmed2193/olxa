@@ -103,7 +103,7 @@ class _ProductItemState extends State<ProductItem> {
           child: Stack(
             children: [
               Container(
-                padding: EdgeInsets.all(8),
+                padding: EdgeInsets.all(2),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(7),
                   border: Border.all(
@@ -134,7 +134,7 @@ class _ProductItemState extends State<ProductItem> {
                     ),
                     Padding(
                       padding: const EdgeInsets.symmetric(
-                        vertical: 7,
+                        vertical: 2,
                       ),
                       child: FittedBox(
                         fit: BoxFit.scaleDown,

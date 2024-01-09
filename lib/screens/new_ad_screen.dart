@@ -148,6 +148,12 @@ class _NewAdScreenState extends State<NewAdScreen> {
           foregroundColor: Colors.grey[800],
           backgroundColor: HexColor(),
           iconTheme: IconThemeData(color: Colors.white),
+             leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
+        ),
           title: Text(
             langPack['Place an Ad']!,
             textDirection: CurrentUser.textDirection,

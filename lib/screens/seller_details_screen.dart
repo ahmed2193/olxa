@@ -3,7 +3,7 @@ import 'package:provider/provider.dart';
 
 import '../helpers/api_helper.dart';
 import '../widgets/grid_products.dart';
-
+import 'package:cached_network_image/cached_network_image.dart';
 class SellerDetailsScreen extends StatelessWidget {
   static const routeName = '/seller-details';
 
@@ -34,10 +34,18 @@ class SellerDetailsScreen extends StatelessWidget {
             children: [
               Container(
                 width: MediaQuery.of(context).size.width / 3,
-                child: Image.network(
-                  pushedMap['seller_image'],
-                  fit: BoxFit.fitWidth,
-                ),
+                child:
+                CachedNetworkImage(
+  imageUrl: pushedMap['seller_image'],
+  fit: BoxFit.fitWidth,
+  placeholder: (context, url) => CircularProgressIndicator(),
+  errorWidget: (context, url, error) => Icon(Icons.error),
+)
+                
+                //  Image.network(
+                //   pushedMap['seller_image'],
+                //   fit: BoxFit.fitWidth,
+                // ),
               ),
               SizedBox(
                 height: 15,

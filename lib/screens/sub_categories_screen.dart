@@ -1,4 +1,5 @@
 import 'package:Mark_Classified/screens/color_helper.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
@@ -86,9 +87,17 @@ class SubCategoriesScreen extends StatelessWidget {
                               null
                           ? Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child: Image.network(pushedArguments['chosenCat']
+                              child:
+                                           CachedNetworkImage(
+  imageUrl: pushedArguments['chosenCat']
                                   .subCategory[i]
-                                  .picture),
+                                  .picture,
+  fit: BoxFit.fitWidth,
+  placeholder: (context, url) => CircularProgressIndicator(),
+  errorWidget: (context, url, error) => Icon(Icons.error),
+)
+                              //  Image.network(
+                              //     ),
                             )
                           : null,
                   title: Text(pushedArguments['chosenCat'].subCategory[i].name),
