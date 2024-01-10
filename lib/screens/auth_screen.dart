@@ -352,12 +352,14 @@ class _AuthScreenState extends State<AuthScreen> {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Builder(builder: (context) {
-                return Image.asset(
-                  "assets/images/classified.png",
-                  height: maxHeight * 0.15,
-                );
-              }),
+              Center(
+                child: Builder(builder: (context) {
+                  return Image.asset(
+                    "assets/images/classified.png",
+                    height: maxHeight * 0.15,
+                  );
+                }),
+              ),
               Container(
                 child: Text(
                   "${langPack['Welcome']},",
@@ -469,7 +471,7 @@ class _AuthScreenState extends State<AuthScreen> {
 
                       textDirection: CurrentUser.textDirection,
                       decoration: InputDecoration(
-                        labelText: langPack['Email/Username'],
+                        labelText: langPack['Email'],
                         suffixIcon: Icon(
                           Icons.account_circle_rounded,
                           size: 20,

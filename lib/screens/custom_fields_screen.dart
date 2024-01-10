@@ -59,7 +59,7 @@ class _CustomFieldsScreenState extends State<CustomFieldsScreen> {
               if (element["value"] == "") allFieldsAreFilled = false;
             });
             // if (allFieldsAreFilled) Navigator.of(context).pop(customData);
-            // if (allFieldsAreFilled)
+            // // // if (allFieldsAreFilled)
             Navigator.of(context).pop();
           },
         ),
@@ -85,20 +85,23 @@ class _CustomFieldsScreenState extends State<CustomFieldsScreen> {
             // print(pushedMap['customData'][0]['title']);
             if (firstLoad) {
               for (var i = 0; i < snapshot.data.length; i++) {
-               dynamic matchingField =
-                   pushedMap['customData']?.firstWhere(
-  (element) {
-    return element['title'].toLowerCase() ==
-        snapshot.data[i]['title'].toLowerCase();
-  },
-  orElse: () => <String, String>{}, // Provide an empty map as the default value
-); // or return a default Map<String, String>
-                
+                dynamic matchingField = pushedMap['customData']?.firstWhere(
+                  (element) {
+                    return element['title'].toLowerCase() ==
+                        snapshot.data[i]['title'].toLowerCase();
+                  },
+                  orElse: () => <String,
+                      String>{}, // Provide an empty map as the default value
+                ); // or return a default Map<String, String>
+
                 customData.add({
                   'id': snapshot.data[i]['id'],
                   'type': snapshot.data[i]['type'],
                   'title': snapshot.data[i]['title'],
-                  'value':matchingField['value']!= null&& matchingField != null ? matchingField['value']! : '',
+                  'value':
+                      matchingField['value'] != null && matchingField != null
+                          ? matchingField['value']!
+                          : '',
                 });
               }
               firstLoad = false;

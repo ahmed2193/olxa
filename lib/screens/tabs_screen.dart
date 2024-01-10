@@ -212,7 +212,7 @@ class activate extends State<TabsScreen> with TickerProviderStateMixin {
     return Scaffold(
       body: _tabs[_lastSelected],
       bottomNavigationBar: FABBottomAppBar(
-        centerItemText: 'SELL',
+        centerItemText: 'POST',
         color: Colors.grey[800]!,
         selectedColor: Colors.grey[800]!,
         notchedShape: CircularNotchedRectangle(),
