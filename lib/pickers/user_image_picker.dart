@@ -118,7 +118,7 @@ class _UserImagePickerState extends State<UserImagePicker> {
                   children: [
                     if (widget.imagesList[i].isLocal)
                       Image.file(
-                        widget.imagesList[i].file,
+                        widget.imagesList[i].file!,
                         fit: BoxFit.fill,
                         alignment: Alignment.center,
                       ),

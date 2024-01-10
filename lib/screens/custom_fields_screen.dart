@@ -20,7 +20,8 @@ class _CustomFieldsScreenState extends State<CustomFieldsScreen> {
   @override
   Widget build(BuildContext context) {
     langPack = Provider.of<Languages>(context, listen: false).selected;
-    final Map<String, dynamic> pushedMap = ModalRoute.of(context)!.settings.arguments as dynamic;
+    final Map<String, dynamic> pushedMap =
+        ModalRoute.of(context)!.settings.arguments as dynamic;
     return Scaffold(
       appBar: AppBar(
         title: Text(
@@ -58,7 +59,7 @@ class _CustomFieldsScreenState extends State<CustomFieldsScreen> {
               if (element["value"] == "") allFieldsAreFilled = false;
             });
             // if (allFieldsAreFilled) Navigator.of(context).pop(customData);
-            // if (allFieldsAreFilled) 
+            // if (allFieldsAreFilled)
             Navigator.of(context).pop();
           },
         ),
@@ -78,20 +79,26 @@ class _CustomFieldsScreenState extends State<CustomFieldsScreen> {
             );
           }
           if (snapshot.data != null && snapshot.data.length > 0) {
+            // print('pushedMap[' ']' * 100);
+            // print(pushedMap['customData'].runtimeType);
+            // print(pushedMap['customData']);
+            // print(pushedMap['customData'][0]['title']);
             if (firstLoad) {
               for (var i = 0; i < snapshot.data.length; i++) {
-                final matchingField = pushedMap['customData']?.firstWhere(
-                  (element) {
-                    return element['title'].toLowerCase() ==
-                        snapshot.data[i]['title'].toLowerCase();
-                  },
-                  orElse: () => null,
-                );
+               dynamic matchingField =
+                   pushedMap['customData']?.firstWhere(
+  (element) {
+    return element['title'].toLowerCase() ==
+        snapshot.data[i]['title'].toLowerCase();
+  },
+  orElse: () => <String, String>{}, // Provide an empty map as the default value
+); // or return a default Map<String, String>
+                
                 customData.add({
                   'id': snapshot.data[i]['id'],
                   'type': snapshot.data[i]['type'],
                   'title': snapshot.data[i]['title'],
-                  'value': matchingField != null ? matchingField['value'] : '',
+                  'value':matchingField['value']!= null&& matchingField != null ? matchingField['value']! : '',
                 });
               }
               firstLoad = false;

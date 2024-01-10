@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:Mark_Classified/screens/color_helper.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -15,9 +17,22 @@ class SubCategoriesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final langPack = Provider.of<Languages>(context).selected;
-    Map pushedArguments = ModalRoute.of(context)!.settings.arguments as dynamic ;
+    Map pushedArguments = ModalRoute.of(context)!.settings.arguments as dynamic;
     //print(pushedArguments);
     //print(subCategories);
+    print('pushedArguments[' '].toString()');
+    print('pushedArguments[' '].toString()');
+    print('pushedArguments[' '].toString()');
+    print('pushedArguments[' '].toString()');
+    print(pushedArguments['newAd'].toString());
+    print(pushedArguments['newAd'].runtimeType);
+    bool newAd = pushedArguments['newAd'].runtimeType == bool
+        ? pushedArguments['newAd']
+        : pushedArguments['newAd']['newAd'];
+    bool editAd = pushedArguments['newAd'].runtimeType == bool
+        ? pushedArguments['editAd']
+        : pushedArguments['editAd']['editAd'];
+
 
     return Scaffold(
       appBar: AppBar(
@@ -38,7 +53,7 @@ class SubCategoriesScreen extends StatelessWidget {
       ),
       body: Column(
         children: [
-          if (!pushedArguments['newAd'])
+          if (!newAd)
             ListTile(
               title: Text(
                 langPack['Show']! + ' ' + langPack['All']!,
@@ -58,14 +73,14 @@ class SubCategoriesScreen extends StatelessWidget {
               itemBuilder: (ctx, i) {
                 return ListTile(
                   onTap: () {
-                    if (pushedArguments['newAd']) {
+                    if (newAd) {
                       Navigator.of(context)
                           .pushNamed(NewAdScreen.routeName, arguments: {
                         'chosenCat': pushedArguments['chosenCat'],
                         'chosenSubCat':
                             pushedArguments['chosenCat'].subCategory[i],
                       });
-                    } else if (pushedArguments['editAd']) {
+                    } else if (editAd) {
                       Navigator.of(context)
                           .pushNamed(EditAdScreen.routeName, arguments: {
                         'chosenCat': pushedArguments['chosenCat'],
@@ -87,18 +102,19 @@ class SubCategoriesScreen extends StatelessWidget {
                               null
                           ? Padding(
                               padding: const EdgeInsets.all(5.0),
-                              child:
-                                           CachedNetworkImage(
-  imageUrl: pushedArguments['chosenCat']
-                                  .subCategory[i]
-                                  .picture,
-  fit: BoxFit.fitWidth,
-  placeholder: (context, url) => CircularProgressIndicator(),
-  errorWidget: (context, url, error) => Icon(Icons.error),
-)
+                              child: CachedNetworkImage(
+                                imageUrl: pushedArguments['chosenCat']
+                                    .subCategory[i]
+                                    .picture,
+                                fit: BoxFit.fitWidth,
+                                placeholder: (context, url) =>
+                                    CircularProgressIndicator(),
+                                errorWidget: (context, url, error) =>
+                                    Icon(Icons.error),
+                              )
                               //  Image.network(
                               //     ),
-                            )
+                              )
                           : null,
                   title: Text(pushedArguments['chosenCat'].subCategory[i].name),
                 );

@@ -47,7 +47,9 @@ class _EditAdScreenState extends State<EditAdScreen> {
     for (int i = 0; i < images.length; i++) {
       productImages.add(ProductImage(
         file: images[i],
-        isLocal: true, url: '', urlPrefix: '',
+        isLocal: true,
+        url: '',
+        urlPrefix: '',
       ));
     }
   }
@@ -138,7 +140,6 @@ class _EditAdScreenState extends State<EditAdScreen> {
       //   });
       // }).then((value) {});
       // print(_itemScreen);
-
     }
   }
 
@@ -155,7 +156,7 @@ class _EditAdScreenState extends State<EditAdScreen> {
         productImages.add(ProductImage(
           isLocal: false,
           urlPrefix: prodData['original_images_path'],
-          url: prodData['images'][i], file: null!,
+          url: prodData['images'][i],
         ));
       }
 
@@ -370,7 +371,8 @@ class _EditAdScreenState extends State<EditAdScreen> {
                       UserImagePicker(
                         imagePickFn: _pickedImage,
                         deleteImageFn: _removeImage,
-                        imagesList: productImages, netImage: '',
+                        imagesList: productImages,
+                        netImage: '',
                       ),
                       SizedBox(
                         height: 15,

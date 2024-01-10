@@ -94,10 +94,12 @@ class _GridProductsState extends State<GridProducts> {
                 childAspectRatio: 3 / 5,
               ),
               itemBuilder: (ctx, i) {
+                print('widget.productsList[i + 8 * index]['']');
+                print(widget.productsList[i + 8 * index]['cityid']);
                 List<String> locations = [
                   widget.productsList[i + 8 * index]['location'],
-                  widget.productsList[i + 8 * index]['cityid'],
-                  widget.productsList[i + 8 * index]['state']
+                  widget.productsList[i + 8 * index]['cityid']==null?'': widget.productsList[i + 8 * index]['cityid'],
+                 widget.productsList[i + 8 * index]['state']==null?'':   widget.productsList[i + 8 * index]['state']
                 ];
                 locations
                     .removeWhere((element) => element == null || element == '');

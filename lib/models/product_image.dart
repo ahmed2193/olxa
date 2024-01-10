@@ -3,11 +3,11 @@ import 'dart:io';
 class ProductImage {
   String url;
   String urlPrefix;
-  File file;
+  File? file;
   bool isLocal;
 
   ProductImage({
-    required this.file,
+     this.file,
     required this.url,
     required this.urlPrefix,
     required this.isLocal,
