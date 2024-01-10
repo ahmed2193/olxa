@@ -122,6 +122,7 @@ class _UserImagePickerState extends State<UserImagePicker> {
                         fit: BoxFit.fill,
                         alignment: Alignment.center,
                       ),
+                     
                     if (!widget.imagesList[i].isLocal)
                       Image.network(
                         widget.imagesList[i].urlPrefix +
